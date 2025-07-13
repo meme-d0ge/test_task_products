@@ -5,7 +5,7 @@ import {IProduct} from "@/entities/product/interfaces/product.interface";
 
 const fetchGetProducts = async ( offset: number, limit: number ): Promise<IProduct[]> => {
     const params = new URLSearchParams({ offset: String(offset), limit: String(limit)}).toString();
-    const url = `${ApiConfig.baseUrl}${ApiConfig.getProducts}?${params}`;
+    const url = `${ApiConfig.getProducts}?${params}`;
     const response = await axiosInstance.get<IProduct[]>(url);
     return response.data
 };
