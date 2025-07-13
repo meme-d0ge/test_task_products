@@ -20,8 +20,9 @@ const ProductCardLink = ({product, ...rest}: IProductCardProps) => {
             {...rest}
         >
         <Card className={'h-full w-full flex flex-col justify-between'}>
-            <CardContent>
+            <CardContent className='h-full'>
                 <Swiper
+                    className='h-full'
                     modules={[Pagination]}
                     spaceBetween={25}
                     slidesPerView={1}

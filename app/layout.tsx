@@ -1,6 +1,8 @@
 'use client'
 import '@/app/style.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import TheHeader from "@/widgets/TheHeader/TheHeader";
+import {ThemeProvider} from "next-themes";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -8,12 +10,17 @@ export default function RootLayout({
 }>) {
     const queryClient = new QueryClient()
     return (
-        <html lang="en">
-            <body className='container mx-auto'>
+        <html lang="en" suppressHydrationWarning>
+            <body className=''>
                 <QueryClientProvider client={queryClient}>
-                    <header></header>
-                    {children}
-                    <footer></footer>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                    >
+                        <TheHeader />
+                        {children}
+                    </ThemeProvider>
                 </QueryClientProvider>
             </body>
         </html>
