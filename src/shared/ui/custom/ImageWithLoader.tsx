@@ -17,6 +17,7 @@ export const ImageWithLoader = ({ className, classNameContainer, ...rest }: IIma
                     <Loader />
                 </div>
             )}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 {...rest}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}

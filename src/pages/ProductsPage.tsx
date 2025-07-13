@@ -34,11 +34,11 @@ export const ProductsPage = () => {
     }, [fetchNextPage]);
 
     return (
-        <main className={'container mx-auto px-2'}>
+        <main className={'container mx-auto px-2 flex-1'}>
             <div className='grid gap-2'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
                     {data?.pages.flat().map((product) => (
-                        <ProductCardLink key={product.id} href={`/products/${product.id}`} product={product}></ProductCardLink>
+                        <ProductCardLink key={product.id} href={`/products/${product.slug}`} product={product}></ProductCardLink>
                     ))}
                 </div>
                 {isLoading || isFetchingNextPage ? <div className='flex justify-center items-center py-5'>

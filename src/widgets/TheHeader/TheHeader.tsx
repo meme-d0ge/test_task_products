@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useMemo} from 'react';
 import Link from "next/link";
 import {
     DropdownMenu,
@@ -16,19 +16,10 @@ import {Label} from "@/shared/ui/label";
 import {useTheme} from "next-themes";
 const TheHeader = () => {
 
-    const [links, setLinks] = useState<Array<{
-        text: string,
-        href: string,
-    }>>([
-        {
-            text: 'About us',
-            href: '/about',
-        },
-        {
-            text: 'Our products',
-            href: '/',
-        }
-    ]);
+    const links = useMemo(() => [
+        { text: 'About us', href: '/about' },
+        { text: 'Our products', href: '/' }
+    ], []);
 
     const path = usePathname()
     const theme = useTheme()

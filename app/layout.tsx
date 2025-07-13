@@ -12,7 +12,7 @@ export default function RootLayout({
     const queryClient = new QueryClient()
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className=''>
+            <body className='min-h-screen flex flex-col'>
                 <QueryClientProvider client={queryClient}>
                     <ThemeProvider
                         attribute="class"
