@@ -1,11 +1,26 @@
 'use client'
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useGetProducts} from "@/entities/product/api/getProducts";
 import ProductCardLink from "@/entities/product/ui/productCardLink";
 import Loader from "@/shared/ui/custom/Loader";
+import {toast} from "sonner";
 
 export const ProductsPage = () => {
     const { data, isLoading, isFetchingNextPage, isFetchNextPageError, isError, error, fetchNextPage} = useGetProducts(20)
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error.message, {
+                description: error?.name || 'error',
+                action: {
+                    label: "Close",
+                    onClick: () => {},
+                },
+            });
+        } else {
+
+        }
+    }, [isFetchNextPageError, isError, error]);
 
     const observerRef = useCallback((node: HTMLDivElement) => {
         const observer = new IntersectionObserver(() => {
@@ -29,7 +44,6 @@ export const ProductsPage = () => {
                 {isLoading || isFetchingNextPage ? <div className='flex justify-center items-center py-5'>
                     <Loader/>
                 </div> : null}
-                {isError || isFetchNextPageError ? <span className='bg-red-300'>{error.message}</span> : null}
                 <div ref={observerRef}/>
             </div>
         </main>

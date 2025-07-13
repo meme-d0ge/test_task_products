@@ -3,6 +3,7 @@ import '@/app/style.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import TheHeader from "@/widgets/TheHeader/TheHeader";
 import {ThemeProvider} from "next-themes";
+import {Toaster} from "@/shared/ui/sonner";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,6 +21,7 @@ export default function RootLayout({
                     >
                         <TheHeader />
                         {children}
+                        <Toaster richColors />
                     </ThemeProvider>
                 </QueryClientProvider>
             </body>
